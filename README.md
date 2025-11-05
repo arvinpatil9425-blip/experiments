@@ -18,6 +18,8 @@ A simple Java project that demonstrates the use of **Binary Search** to locate a
 The system assumes a **sorted array of ISBN numbers**. When a user inputs a target ISBN, the program uses binary search to find the book's index in the array.
 
 ```java
+
+
 2. 📚 Application: Sorting Book Titles Alphabetically with Merge Sort
 ✨ Features
 - ✅ Sorts book titles in alphabetical order
