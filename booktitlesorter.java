@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class BookTitleSorter {
+
+    public static void mergeSort(String[] books, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            mergeSort(books, left, mid);
+            mergeSort(books, mid + 1, right);
+            merge(books, left, mid, right);
+        }
+    }
+
+    public static void merge(String[] books, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        String[] L = new String[n1];
+        String[] R = new String[n2];
+
+        for (int i = 0; i < n1; i++) L[i] = books[left + i];
+        for (int j = 0; j < n2; j++) R[j] = books[mid + 1 + j];
+
+        int i = 0, j = 0, k = left;
+        while (i < n1 && j < n2) {
+            if (L[i].compareToIgnoreCase(R[j]) <= 0) {
+                books[k++] = L[i++];
+            } else {
+                books[k++] = R[j++];
+            }
+        }
+
+        while (i < n1) books[k++] = L[i++];
+        while (j < n2) books[k++] = R[j++];
+    }
+
+    public static void main(String[] args) {
+        String[] titles = {
+            "The Alchemist", "Brave New World", "1984", "Moby Dick", "A Tale of Two Cities"
+        };
+
+        mergeSort(titles, 0, titles.length - 1);
+
+        System.out.println("Sorted Book Titles:");
+        for (String title : titles) {
+            System.out.println(title);
+        }
+    }
+}
